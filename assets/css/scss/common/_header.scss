@@ -92,8 +92,16 @@ nav.main-menu {
     }
   }
 
+  /* Sin icono de búsqueda: el último enlace es menú normal, no flotar a la derecha */
   > ul li:last-child {
-    float: right;
+    float: none;
+  }
+
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 }
 

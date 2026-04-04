@@ -554,6 +554,21 @@ nav.main-menu ul {
   list-style: none;
 }
 
+/* Flex: todos los ítems del menú juntos y centrados (evita que el último quede como la antigua lupa a la derecha) */
+nav.main-menu > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 nav.main-menu ul li {
   display: inline-block;
 }
@@ -609,8 +624,8 @@ nav.main-menu ul li:last-child a {
   display: inline-block;
 }
 
-nav.main-menu > ul li:last-child {
-  float: none;
+nav.main-menu > ul > li:last-child {
+  float: none !important;
 }
 
 /* Búsqueda retirada del sitio: ocultar restos de plantilla o HTML antiguo en caché */
