@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+<rect width="160" height="160" rx="80" fill="#0f172a"/>
+<circle cx="80" cy="60" r="30" fill="#fbbf24"/>
+<rect x="35" y="96" width="90" height="45" rx="20" fill="#1d4ed8"/>
+<text x="80" y="152" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="12">Laura Pineda</text>
+</svg>
