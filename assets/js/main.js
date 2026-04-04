@@ -85,7 +85,7 @@
          });
         }
 
-        // Catálogo: isotope solo en shop (fitRows + row en bloque en CSS evita footer encima de tarjetas)
+        // Catálogo: isotope solo en shop (no forzar display:block en .row: rompe el grid Bootstrap)
         var $productLists = $(".product-lists");
         if ($productLists.length) {
             $productLists.isotope({
