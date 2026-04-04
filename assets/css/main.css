@@ -604,12 +604,27 @@ nav.main-menu ul > li:hover ul {
   visibility: visible;
 }
 
+/* Ultimo item del menu ya no aloja la lupa: sin float a la derecha */
 nav.main-menu ul li:last-child a {
   display: inline-block;
 }
 
 nav.main-menu > ul li:last-child {
-  float: right;
+  float: none;
+}
+
+/* Búsqueda retirada del sitio: ocultar restos de plantilla o HTML antiguo en caché */
+.search-area,
+a.search-bar-icon,
+a.mobile-show.search-bar-icon,
+a.mobile-hide.search-bar-icon,
+.top-header-area .header-icons {
+  display: none !important;
+}
+
+/* Isotope usa position:absolute en hijos; .row (flex) queda sin altura y el footer sube sobre el grid */
+.row.product-lists {
+  display: block !important;
 }
 
 .site-logo {

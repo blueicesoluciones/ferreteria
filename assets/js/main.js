@@ -85,22 +85,20 @@
          });
         }
 
-        // projects filters isotop
-        $(".product-filters li").on('click', function () {
-            
-            $(".product-filters li").removeClass("active");
-            $(this).addClass("active");
-
-            var selector = $(this).attr('data-filter');
-
-            $(".product-lists").isotope({
-                filter: selector,
+        // Catálogo: isotope solo en shop (fitRows + row en bloque en CSS evita footer encima de tarjetas)
+        var $productLists = $(".product-lists");
+        if ($productLists.length) {
+            $productLists.isotope({
+                itemSelector: "> div",
+                layoutMode: "fitRows",
+                percentPosition: true
             });
-            
-        });
-        
-        // isotop inner
-        $(".product-lists").isotope();
+            $(".product-filters li").on("click", function () {
+                $(".product-filters li").removeClass("active");
+                $(this).addClass("active");
+                $productLists.isotope({ filter: $(this).attr("data-filter") });
+            });
+        }
 
         // magnific popup
         $('.popup-youtube').magnificPopup({
@@ -147,21 +145,15 @@
             meanMenuContainer: '.mobile-menu',
             meanScreenWidth: "992"
         });
-        
-         // search form
-        $(".search-bar-icon").on("click", function(){
-            $(".search-area").addClass("search-active");
-        });
-
-        $(".close-btn").on("click", function() {
-            $(".search-area").removeClass("search-active");
-        });
     
     });
 
 
     jQuery(window).on("load",function(){
         jQuery(".loader").fadeOut(1000);
+        if (jQuery(".product-lists").length && jQuery.fn.isotope) {
+            jQuery(".product-lists").isotope("layout");
+        }
     });
 
 

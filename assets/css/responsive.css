@@ -192,11 +192,7 @@
 		display: block!important;
 	}
 	a.mobile-show.search-bar-icon {
-	    position: absolute;
-	    right: 60px;
-	    top: 22px;
-	    z-index: 999;
-	    color: #fff;
+	    display: none !important;
 	}
 
 }
@@ -550,11 +546,7 @@
 		display: block!important;
 	}
 	a.mobile-show.search-bar-icon {
-	    position: absolute;
-	    right: 60px;
-	    top: 22px;
-	    z-index: 999;
-	    color: #fff;
+	    display: none !important;
 	}
 }
 /* Wide Mobile Layout: 480px. */
