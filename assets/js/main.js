@@ -87,6 +87,60 @@
 
         // Catálogo: isotope solo en shop (no forzar display:block en .row: rompe el grid Bootstrap)
         var $productLists = $(".product-lists");
+        var hasIsotope = false;
+        var $catalogSearch = $("#catalog-search");
+        var $catalogSearchEmpty = $("#catalog-search-empty");
+
+        var normalizeSearchText = function (value) {
+            if (!value) {
+                return "";
+            }
+            var normalizedValue = value.toLowerCase();
+            if (typeof normalizedValue.normalize === "function") {
+                normalizedValue = normalizedValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            }
+            return normalizedValue.trim();
+        };
+
+        var applyCatalogSearch = function () {
+            if (!$productLists.length || !$catalogSearch.length) {
+                return;
+            }
+
+            var query = normalizeSearchText($catalogSearch.val());
+            var visibleCount = 0;
+
+            if (hasIsotope) {
+                $productLists.isotope({
+                    filter: function () {
+                        var $item = $(this);
+                        var searchableText = normalizeSearchText(
+                            $item.find("h3").text() + " " + $item.find(".product-price").text()
+                        );
+                        var isMatch = !query || searchableText.indexOf(query) !== -1;
+                        if (isMatch) {
+                            visibleCount += 1;
+                        }
+                        return isMatch;
+                    }
+                });
+            } else {
+                $productLists.children("div").each(function () {
+                    var $item = $(this);
+                    var searchableText = normalizeSearchText(
+                        $item.find("h3").text() + " " + $item.find(".product-price").text()
+                    );
+                    var isMatch = !query || searchableText.indexOf(query) !== -1;
+                    $item.toggle(isMatch);
+                    if (isMatch) {
+                        visibleCount += 1;
+                    }
+                });
+            }
+
+            $catalogSearchEmpty.toggle(visibleCount === 0);
+        };
+
         if ($productLists.length && $.fn.isotope) {
             try {
                 $productLists.isotope({
@@ -94,16 +148,17 @@
                     layoutMode: "fitRows",
                     percentPosition: true
                 });
-                $(".product-filters li").on("click", function () {
-                    $(".product-filters li").removeClass("active");
-                    $(this).addClass("active");
-                    $productLists.isotope({ filter: $(this).attr("data-filter") });
-                });
+                hasIsotope = true;
             } catch (e) {
                 if (window.console && console.warn) {
                     console.warn("Isotope:", e);
                 }
             }
+        }
+
+        if ($catalogSearch.length) {
+            $catalogSearch.on("input", applyCatalogSearch);
+            applyCatalogSearch();
         }
 
         // magnific popup

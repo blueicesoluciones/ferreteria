@@ -930,7 +930,7 @@ nav.main-menu li a {
   .top-header-area .mean-container a.meanmenu-reveal {
     right: 10px !important;
     left: auto !important;
-    top: 35% !important;
+    top: 30% !important;
     -webkit-transform: translateY(-50%) !important;
     -ms-transform: translateY(-50%) !important;
     transform: translateY(-50%) !important;
@@ -2629,29 +2629,42 @@ ul.social-link-team li a {
   margin-bottom: 80px;
 }
 
-.product-filters ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-align: center;
+.product-search-box {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.product-filters ul li {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 18px;
-  margin: 15px;
+.product-search-box i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.product-search-box input {
+  width: 100%;
   border: 2px solid #051922;
-  color: #323232;
-  cursor: pointer;
-  padding: 8px 20px;
-  border-radius: 25px;
+  border-radius: 999px;
+  font-size: 18px;
+  padding: 12px 18px 12px 48px;
+  line-height: 1.2;
 }
 
-.product-filters ul li.active {
-  border: 2px solid #F28123;
-  background-color: #F28123;
-  color: #fff;
+.product-search-box input:focus {
+  outline: none;
+  border-color: #F28123;
+}
+
+.product-search-empty {
+  display: none;
+  margin-top: 18px;
+  text-align: center;
+  color: #666;
+  font-weight: 600;
 }
 
 .single-product-item {

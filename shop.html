@@ -30,9 +30,9 @@
 	<!-- mean menu css -->
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css?v=20">
+	<link rel="stylesheet" href="assets/css/main.css?v=22">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css?v=13">
+	<link rel="stylesheet" href="assets/css/responsive.css?v=15">
 
 </head>
 <body>
@@ -101,13 +101,12 @@
 			<div class="row">
                 <div class="col-md-12">
                     <div class="product-filters">
-                        <ul>
-                            <li class="active" data-filter="*">Todos</li>
-                            <li data-filter=".strawberry">Taladro Percutor 13mm</li>
-                            <li data-filter=".berry">Juego de Llaves Mixtas</li>
-                            <li data-filter=".lemon">Caja de Tornillos</li>
-                            <li data-filter=".cinta">Cinta métrica</li>
-                        </ul>
+						<label class="sr-only" for="catalog-search">Buscar producto</label>
+						<div class="product-search-box">
+							<i class="fas fa-search" aria-hidden="true"></i>
+							<input id="catalog-search" type="search" placeholder="Buscar producto (ej: taladro, tornillos, cinta)">
+						</div>
+						<p id="catalog-search-empty" class="product-search-empty" aria-live="polite">No encontramos productos con ese termino.</p>
                     </div>
                 </div>
             </div>
@@ -252,7 +251,7 @@
 	<!-- sticker js -->
 	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+	<script src="assets/js/main.js?v=2"></script>
 
 </body>
 </html>

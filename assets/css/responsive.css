@@ -45,6 +45,11 @@
 		background-attachment: scroll !important;
 		background-position: center center;
 	}
+	.breadcrumb-section {
+		background-attachment: scroll !important;
+		background-position: center center !important;
+		background-size: cover !important;
+	}
 	.hero-text h1 {
 	    font-size: 40px;
 	}
@@ -204,6 +209,11 @@
 	.hero-bg {
 		background-attachment: scroll !important;
 		background-position: center center;
+	}
+	.breadcrumb-section {
+		background-attachment: scroll !important;
+		background-position: center center !important;
+		background-size: cover !important;
 	}
 	.site-logo img {
 	    max-width: 168px;
