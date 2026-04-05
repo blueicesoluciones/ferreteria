@@ -87,17 +87,23 @@
 
         // Catálogo: isotope solo en shop (no forzar display:block en .row: rompe el grid Bootstrap)
         var $productLists = $(".product-lists");
-        if ($productLists.length) {
-            $productLists.isotope({
-                itemSelector: "> div",
-                layoutMode: "fitRows",
-                percentPosition: true
-            });
-            $(".product-filters li").on("click", function () {
-                $(".product-filters li").removeClass("active");
-                $(this).addClass("active");
-                $productLists.isotope({ filter: $(this).attr("data-filter") });
-            });
+        if ($productLists.length && $.fn.isotope) {
+            try {
+                $productLists.isotope({
+                    itemSelector: "> div",
+                    layoutMode: "fitRows",
+                    percentPosition: true
+                });
+                $(".product-filters li").on("click", function () {
+                    $(".product-filters li").removeClass("active");
+                    $(this).addClass("active");
+                    $productLists.isotope({ filter: $(this).attr("data-filter") });
+                });
+            } catch (e) {
+                if (window.console && console.warn) {
+                    console.warn("Isotope:", e);
+                }
+            }
         }
 
         // magnific popup
@@ -135,7 +141,7 @@
 
        
 
-        // stikcy js
+        // sticky: z-index por CSS en móvil (.mean-bar); en PC se mantiene el comportamiento por defecto del plugin
         $("#sticker").sticky({
             topSpacing: 0
         });
