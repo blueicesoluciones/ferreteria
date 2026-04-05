@@ -30,9 +30,9 @@
 	<!-- mean menu css -->
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css?v=22">
+	<link rel="stylesheet" href="assets/css/main.css?v=23">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css?v=15">
+	<link rel="stylesheet" href="assets/css/responsive.css?v=16">
 
 </head>
 <body>
@@ -86,7 +86,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>Detalle del producto</p>
-						<h1>Producto</h1>
+						<h1 id="product-breadcrumb-title">Producto</h1>
 					</div>
 				</div>
 			</div>
@@ -100,21 +100,15 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="images/pinturaanticorrosiva.webp" alt="Pintura anticorrosiva 1 L">
+						<img id="product-image" src="images/pinturaanticorrosiva.webp" alt="Pintura anticorrosiva 1 L">
 					</div>
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3>Pintura Anticorrosiva 1L</h3>
-						<p class="single-product-pricing"><span>Por unidad</span> COP 180.000</p>
-						<p>Disenado para trabajos exigentes, con buen rendimiento y materiales de alta durabilidad para uso profesional y domestico.</p>
-						<h4>Compartir:</h4>
-						<ul class="product-share">
-							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href=""><i class="fab fa-twitter"></i></a></li>
-							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
-						</ul>
+						<h3 id="product-title">Pintura Anticorrosiva 1L</h3>
+						<p id="product-description">Disenado para trabajos exigentes, con buen rendimiento y materiales de alta durabilidad para uso profesional y domestico.</p>
+						<p id="product-extra">Ideal para mantenimiento de rejas, portones y estructuras metalicas expuestas a humedad.</p>
+						<h3 id="product-price">COP 180.000</h3>
 					</div>
 				</div>
 			</div>
@@ -128,40 +122,11 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Relacionados</span> Productos</h3>
-						<p>Soluciones en herramientas electricas, fijaciones, pintura y seguridad para hogar y obra.</p>
+						<h3><span class="orange-text">Otros</span> productos</h3>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="images/taladropercutor.webp" alt="Taladro percutor 13 mm"></a>
-						</div>
-						<h3>Taladro Percutor 13mm</h3>
-						<p class="product-price"><span>Por unidad</span> COP 340.000 </p>
-</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="images/juegodellavesmixtas.webp" alt="Juego de llaves mixtas"></a>
-						</div>
-						<h3>Juego de Llaves Mixtas</h3>
-						<p class="product-price"><span>Por unidad</span> COP 280.000 </p>
-</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="images/cajadetornillos.webp" alt="Caja de tornillos"></a>
-						</div>
-						<h3>Caja de Tornillos</h3>
-						<p class="product-price"><span>Por unidad</span> COP 140.000 </p>
-</div>
-				</div>
-			</div>
+			<div id="related-products-list" class="row"></div>
 		</div>
 	</div>
 	<!-- end more products -->
@@ -246,6 +211,97 @@
 	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="assets/js/main.js?v=2"></script>
+	<script>
+		(function () {
+			var products = {
+				"taladro-percutor-13mm": {
+					title: "Taladro Percutor 13mm",
+					price: "COP 340.000",
+					image: "images/taladropercutor.webp",
+					alt: "Taladro percutor 13 mm",
+					description: "Taladro con funcion percutora para concreto, bloque y madera. Potencia equilibrada para uso diario en taller y obra.",
+					extra: "Incluye mandril de 13 mm y mango auxiliar para mejor control en perforaciones continuas."
+				},
+				"juego-llaves-mixtas": {
+					title: "Juego de Llaves Mixtas",
+					price: "COP 280.000",
+					image: "images/juegodellavesmixtas.webp",
+					alt: "Juego de llaves mixtas",
+					description: "Set de llaves boca-estrella para ajuste y mantenimiento de maquinaria, bicicletas y trabajos de mecanica general.",
+					extra: "Acero resistente a la torsion y estuche organizado para tener todas las medidas a mano."
+				},
+				"caja-tornillos": {
+					title: "Caja de Tornillos",
+					price: "COP 140.000",
+					image: "images/cajadetornillos.webp",
+					alt: "Caja de tornillos",
+					description: "Surtido de tornillos para madera, drywall y fijacion general. Solucion practica para montajes y reparaciones rapidas.",
+					extra: "Compartimentos por tamano para facilitar inventario en obra y evitar perdida de piezas."
+				},
+				"amoladora-angular-45": {
+					title: "Amoladora Angular 4.5\"",
+					price: "COP 200.000",
+					image: "images/amoladoraangular.webp",
+					alt: "Amoladora angular 4.5 pulgadas",
+					description: "Herramienta versatil para corte y desbaste en metal y mamposteria, ideal para trabajos de ajuste y acabados.",
+					extra: "Compatible con discos de 4.5 pulgadas, guarda de seguridad y agarre ergonomico."
+				},
+				"pintura-anticorrosiva-1l": {
+					title: "Pintura Anticorrosiva 1L",
+					price: "COP 180.000",
+					image: "images/pinturaanticorrosiva.webp",
+					alt: "Pintura anticorrosiva 1 L",
+					description: "Recubrimiento protector para superficies metalicas expuestas a humedad, lluvia y ambientes exteriores.",
+					extra: "Buena adherencia y acabado uniforme para alargar la vida util de rejas, portones y estructuras."
+				},
+				"cinta-metrica-5m": {
+					title: "Cinta metrica 5 m",
+					price: "COP 45.000",
+					image: "images/cintametrica.webp",
+					alt: "Cinta metrica 5 m",
+					description: "Herramienta de medicion compacta y resistente para carpinteria, instalacion y tareas del hogar.",
+					extra: "Freno suave y gancho metalico firme para lecturas precisas en medidas cortas y largas."
+				}
+			};
+
+			var params = new URLSearchParams(window.location.search);
+			var productKey = params.get("product");
+			if (!productKey || !products[productKey]) {
+				productKey = "pintura-anticorrosiva-1l";
+			}
+
+			var product = products[productKey];
+			document.getElementById("product-breadcrumb-title").textContent = product.title;
+			document.getElementById("product-title").textContent = product.title;
+			document.getElementById("product-price").textContent = product.price;
+			document.getElementById("product-description").textContent = product.description;
+			document.getElementById("product-extra").textContent = product.extra;
+			document.title = product.title + " | FerrePro";
+
+			var productImage = document.getElementById("product-image");
+			productImage.src = product.image;
+			productImage.alt = product.alt;
+
+			var relatedContainer = document.getElementById("related-products-list");
+			var relatedKeys = Object.keys(products).filter(function (key) {
+				return key !== productKey;
+			}).slice(0, 3);
+
+			relatedContainer.innerHTML = relatedKeys.map(function (key, index) {
+				var related = products[key];
+				var offsetClass = index === 2 ? " offset-lg-0 offset-md-3" : "";
+				return '<div class="col-lg-4 col-md-6 text-center' + offsetClass + '">' +
+					'<div class="single-product-item">' +
+						'<div class="product-image">' +
+							'<a href="single-product.html?product=' + key + '"><img src="' + related.image + '" alt="' + related.alt + '"></a>' +
+						'</div>' +
+						'<h3><a href="single-product.html?product=' + key + '">' + related.title + '</a></h3>' +
+						'<p class="product-price"><span>Por unidad</span> ' + related.price + " </p>" +
+					"</div>" +
+				"</div>";
+			}).join("");
+		})();
+	</script>
 
 </body>
 </html>

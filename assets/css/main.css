@@ -2690,6 +2690,15 @@ ul.social-link-team li a {
   margin-bottom: 10px;
 }
 
+.single-product-item h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.single-product-item h3 a:hover {
+  color: #F28123;
+}
+
 p.product-price {
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
